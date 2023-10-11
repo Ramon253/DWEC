@@ -8,18 +8,20 @@ form.addEventListener("submit", (e) => {
     let temp = parseFloat(document.getElementById("temperature").value)
 
     if (farToCel) {
-        output.innerHTML = `${((temp - 32) / 9) * 5} ºC`
+        output.innerHTML = `${temp} ºF = ${((temp - 32) / 9) * 5} ºC`
         return
     }
-    output.innerHTML = `${((temp/5)*9)+32} ºF`
+    output.innerHTML = `${temp} ºC =  ${((temp/5)*9)+32} ºF`
 })
 
 function change() {
     if (!farToCel) {
         farToCel = true
         enun.innerHTML = "F to C"
+        document.getElementById("temperature").placeholder = "Temperatura | F --> C"
         return
     }
     farToCel = false
     enun.innerHTML = "C to F"
+    document.getElementById("temperature").placeholder = "Temperatura | C --> F"
 }

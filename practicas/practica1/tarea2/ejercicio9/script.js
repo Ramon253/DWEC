@@ -1,9 +1,11 @@
 let date = new Date()
 
+//le sumo 1 porque el mes lo cuenta desde 0 y no 1
 let month = date.getMonth() + 1
 let remainingMonth = 12 - month
 
-let day = date.getDay() + 1
+let day = date.getDate()
+
 let remainingDays = 25 - day
 
 console.log(remainingDays)
