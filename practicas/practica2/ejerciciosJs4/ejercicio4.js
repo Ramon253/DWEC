@@ -1,6 +1,6 @@
-/*Apartado A*/
+/*-------------Apartado A--------------*/
 /*-------------------------------------*/
-function a(arr){
+function arrSum(arr){
     let sum = 0
 
     for (let number of arr) {
@@ -8,6 +8,10 @@ function a(arr){
     }
     return sum
 }
+
+console.log("-------------------------------------")
+console.log("-------------Apartado A--------------")
+console.log(arrSum([214,12,234,124,12,312,3]))
 /*-------------------------------------*/
 /*-------------Apartado B--------------*/
 function getMonthName(month, year){
@@ -20,8 +24,10 @@ function getMonthName(month, year){
     * 11 (que seria diciembre) el -1 en el dia toma el mes enterior y asi tambien tenemos
     * el numero de dias de cada mes*/
     let date = new Date(year, month,0)
-    return `${months[date.getMonth()]} Tiene ${date.getDate()} dias`
+    return `${months[date.getMonth()]} has ${date.getDate()} days`
 }
+console.log("\n-------------------------------------")
+console.log("-------------Apartado B--------------")
 
 console.log(getMonthName(12, 2022))
 /*-------------------------------------*/
