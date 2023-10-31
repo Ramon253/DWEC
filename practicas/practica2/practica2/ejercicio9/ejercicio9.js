@@ -8,6 +8,21 @@ function dniLetter(number) {
 
 form.addEventListener("submit", (e) => {
     e.preventDefault()
+    let letter = document.getElementById("letter").value
     const number = parseInt(document.getElementById("dni").value)
-    output.innerHTML = dniLetter(number)
+
+    if (number < 0){
+        output.innerHTML = "Introduce un numero positivo"
+        return
+    }
+    if (number < 10000000){
+        output.innerHTML = "EL dni no es valido, introduce un numero adecuado"
+    }
+    console.log(letter)
+    if (letter !== dniLetter(number)){
+        output.innerHTML = `La letra no coincide Su DNI es ${number} ${dniLetter(number)}`
+        return;
+    }
+
+    output.innerHTML = `Su DNI es ${number} ${dniLetter(number)}`
 })
