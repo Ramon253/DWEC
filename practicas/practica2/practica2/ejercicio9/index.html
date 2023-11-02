@@ -5,12 +5,22 @@
     <title>Ejercicio 9</title>
 </head>
 <body>
-<form id="input">
-    <input type="text" name="dni" id="dni" placeholder="DNI" minlength="8" maxlength="8" required>
-    <input type="text" name="letter" id="letter" placeholder="Letra" maxlength="1" required>
-    <button type="submit">Comprobar</button>
-</form>
-<h2 id="output"></h2>
+<h2>Tus tiradas</h2>
+<div style="display: flex;flex-wrap: wrap;width: 100px">
+    <h2 >Dado 1 : </h2>
+    <h2 id="diceOutput1"></h2>
+    <h2>Dado 2 : </h2>
+    <h2 id="diceOutput2"></h2>
+</div>
+<button onclick="tirarDados()">Tirar dados</button>
+
+<h2>Tus tiradas</h2>
+<div style="display: flex;flex-wrap: wrap;width: 200px">
+    <h2 >Tirada mas alta : </h2>
+    <h2 id="maxDiceOutput"></h2>
+    <h2>Tirada mas baja : </h2>
+    <h2 id="minDiceOutput"></h2>
+</div>
 <script src="ejercicio9.js"></script>
 </body>
 </html>

@@ -1,33 +1,29 @@
-const form = document.getElementById("input")
-const output = document.getElementById("output")
+let form = document.getElementById("input")
+let output = document.getElementById("output")
 
-function isPalindromo(phrase) {
-    phrase = phrase.replace(/ /g, "")
-    phrase = phrase.toLowerCase()
-    const length = phrase.length
-    let firstHalf
-    let secondHalf
-
-    if (length % 2 === 0) {
-        firstHalf = phrase.slice(0, length / 2)
-        secondHalf = phrase.slice(length / 2)
-    } else {
-        firstHalf = phrase.slice(0, length / 2)
-        secondHalf = phrase.slice((length / 2) + 1)
-    }
-    secondHalf = secondHalf.split("")
-    secondHalf = secondHalf.reverse()
-    secondHalf = secondHalf.join("")
-
-    return firstHalf === secondHalf
+function dniLetter(number) {
+    const letters = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+    return letters[number % 23]
 }
 
 form.addEventListener("submit", (e) => {
     e.preventDefault()
-    let phrase = document.getElementById("phrase").value
-    if (isPalindromo(phrase)){
-        output.innerHTML = "La frase es un palindromo"
+    let letter = document.getElementById("letter").value
+    const number = parseInt(document.getElementById("dni").value)
+
+    if (number < 0){
+        output.innerHTML = "Introduce un numero positivo"
         return
     }
-    output.innerHTML = "No es un palindromo"
+    if (number < 10000000){
+        output.innerHTML = "EL dni no es valido, introduce un numero adecuado"
+        return;
+    }
+    console.log(letter)
+    if (letter !== dniLetter(number)){
+        output.innerHTML = `La letra no coincide, Su DNI es ${number} ${dniLetter(number)}`
+        return;
+    }
+
+    output.innerHTML = `Su DNI es ${number} ${dniLetter(number)}`
 })
