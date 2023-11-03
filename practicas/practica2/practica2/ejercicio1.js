@@ -3,7 +3,6 @@ function fibonacci(size) {
 
     for (let i = sequence.length; i < size; i++) {
         sequence[i] = sequence[i - 1] + sequence[i - 2]
-
     }
     return sequence
 }
