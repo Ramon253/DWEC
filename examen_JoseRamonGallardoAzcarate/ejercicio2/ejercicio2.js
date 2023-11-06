@@ -38,8 +38,7 @@ for (let i = 0; i < modules.size; i++) {
     output.innerText +=''.padStart(6,'  ') +  modules.get(i).get("abreviation") + " --> " + modules.get(i).get("fullName") + '\n'
 }
 
+modules.set("0",null)
+console.log(modules.delete("0"))
+console.log(modules)
 
-console.log(modules.get(1).get('abreviation'))
-
-
-console.log(typeof 4)
