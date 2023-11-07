@@ -30,7 +30,7 @@ const showMenu = () => {
     if (parseInt(firstAnswer) >= 6) return -1
 
     let ownDir = false
-    if (firstAnswer > 1) {
+    if (firstAnswer > 2) {
         console.log(`${colors.FgRed}\r #:${colors.FgGreen} Want to create directory foreach pair?`)
         ownDir = prompt(inputMenu).trim().toLowerCase() === 'y'
     }
