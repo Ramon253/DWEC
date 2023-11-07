@@ -120,7 +120,14 @@ const createFiles = (answers) => {
             break
         }
 
-        case '3' : {
+         case '3' : {
+            for (let i = 1; i <= fileNumber; i++) {
+                fs.writeFile(`${path}/${fileName}${i}.css`, '', mkdriCb)
+            }
+            break
+        }
+
+        case '4' : {
             if (!ownDir) {
                 for (let i = 1; i <= fileNumber; i++) {
                     let dirPath = `${path}/${fileName}${i}`
@@ -143,7 +150,7 @@ const createFiles = (answers) => {
             }
             break
         }
-        case '4' : {
+        case '5' : {
             if (!ownDir) {
                 for (let i = 1; i <= fileNumber; i++) {
                     let dirPath = `${path}/${fileName}${i}`
@@ -167,7 +174,7 @@ const createFiles = (answers) => {
             }
             break
         }
-        case '5' : {
+        case '6' : {
             if (!ownDir) {
                 for (let i = 1; i <= fileNumber; i++) {
                     let dirPath = `${path}/${fileName}${i}`
@@ -191,7 +198,7 @@ const createFiles = (answers) => {
                 })
             }
             break
-
+        
         }
     }
 }
