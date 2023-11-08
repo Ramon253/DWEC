@@ -15,7 +15,7 @@ const showMenu = () => {
  \\___  /   |__|____/\\___  >  \\______  /\\___  >___|  /\\___  >__|  (____  /__|  \\____/|__|   
      \\/                 \\/          \\/     \\/     \\/     \\/           \\/                   
 ----------------------------------------------------------------------------------------------`
-    const options = ['HTML', 'JS', 'PHP', 'HTML and JS', 'HTML and CSS', 'QUIT']
+    const options = ['HTML', 'JS','CSS', 'PHP', 'HTML and JS', 'HTML and CSS', 'QUIT']
     console.log(colors.FgCyan)
     console.log(menuText)
 
@@ -27,7 +27,7 @@ const showMenu = () => {
 
     console.log(''.padStart(10 + menuText.length, ''))
     let firstAnswer = prompt(inputMenu)
-    if (parseInt(firstAnswer) >= 6) return -1
+    if (parseInt(firstAnswer) >= 7) return -1
 
     let ownDir = false
     if (firstAnswer > 2) {
