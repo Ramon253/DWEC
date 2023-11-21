@@ -7,7 +7,5 @@ function fibonacci(size) {
     return sequence
 }
 
-
-
 console.log(fibonacci(15))
 

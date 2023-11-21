@@ -1,0 +1,1 @@
+const isLeap = (year) => year % 4 === 0
