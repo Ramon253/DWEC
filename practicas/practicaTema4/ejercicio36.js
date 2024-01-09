@@ -2,19 +2,23 @@ function startBingo() {
     let cards = []
     for (let i = 0; i < 5; i++) {
         cards.push(createBingoCard())
+        console.log("----------------------------------------------")
+        console.log("------------------Cartones--------------------")
         console.table(cards[i])
     }
     do {
         let randNum = Math.floor(Math.random() * 90 + 1)
-        console.log("Numero : " + randNum)
+        console.log("----------------------------------------------")
+        console.log("                Numero : " + randNum)
+        console.log("----------------------------------------------")
         for (let cardsKey in cards) {
             cards[cardsKey] = checkNum(cards[cardsKey], randNum)
-            console.log("Carton :" + cardsKey)
+            console.log("Carton : " + cardsKey)
             console.table(cards[cardsKey])
         }
 
     } while (!checkBingo(cards))
-    console.log("Ganador del bingo es el carton :" + checkBingo(cards))
+    console.log("Ganador del bingo es el carton : " + checkBingo(cards))
 }
 
 const checkNum = (card, randNum) => {
@@ -28,13 +32,15 @@ const checkNum = (card, randNum) => {
 }
 
 const checkBingo = (cards) => {
+    let isBingo = false
     for (const card of cards) {
-        let isBingo = false
         for (const cardRow of card) {
-            if (new Set(cardRow).size !== 1) {
+            let isZero = new Set(cardRow)
+            if (isZero.size !== 1) {
                 isBingo = false;
                 break;
             }
+
             isBingo = true
         }
         if (isBingo)
