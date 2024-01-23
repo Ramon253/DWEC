@@ -1,0 +1,64 @@
+<!Doctype html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <style>
+            body{
+                background: #1a1f29;
+                color: whitesmoke;
+            }
+            table,th,td{
+                border: 2px solid whitesmoke;
+                text-align: center;
+            }
+            table{
+                border-collapse: collapse;
+                width: 50vw;
+                height: 20vh;
+            }
+        </style>
+<title>ejercicio18</title>
+</head>
+<body>
+<table id="table">
+    <tr>
+        <th>Hola</th>
+        <td>Que tal</td>
+        <td>Uff</td>
+    </tr>
+    <tr>
+        <th>Adios</th>
+        <td>Que te den</td>
+        <td>JEjeje</td>
+    </tr>
+
+</table>
+<form action="" id="form">
+    <h2>Add row</h2>
+    <label for="header">Header</label>
+    <input type="text" id="header">
+    <label for="txt1">txt1</label>
+    <input type="text" id="txt1">
+    <label for="txt2">txt2</label>
+    <input type="text" id="txt2">
+    <button type="submit">Añadir</button>
+</form>
+<script>
+    let form = document.getElementById("form")
+    form.addEventListener("submit", (e) =>{
+        e.preventDefault()
+        let header = document.getElementById("header").value
+        let txt1 = document.getElementById("txt1").value
+        let txt2 = document.getElementById("txt2").value
+        addRow(header,txt1, txt2)
+    })
+    function addRow(header, txt1, txt2){
+        let table = document.getElementById("table");
+        table.innerHTML += `<tr> <th>${header}</th><td>${txt1}</td><td>${txt2}</td>`
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!Doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ejercicio16</title>
+    <style>
+        p{
+            background: #1abc9c;
+            padding: 2rem;
+            border-radius: 1rem;
+        }
+    </style>
+</head>
+<body>
+<p id="parrafo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad aperiam autem delectus, deleniti dignissimos ea
+    eligendi eos error est eum, excepturi fugiat itaque laboriosam, nihil nulla officia officiis porro possimus quia rem
+    repudiandae soluta tempore tenetur veniam vero voluptatem.</p>
+<button onclick="changeColor()">change color</button>
+<script>
+    function changeColor(){
+        let paragraph = document.getElementById("parrafo");
+        let color = getRandHex() + "" + getRandHex() + "" + getRandHex();
+        paragraph.style.background = `#${color}`
+    }
+    function getRandHex(){
+        return Math.floor(Math.random() * 255 + 1).toString(16)
+    }
+</script>
+</body>
+</html>
