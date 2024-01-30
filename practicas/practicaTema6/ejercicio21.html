@@ -1,0 +1,57 @@
+<!Doctype html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            #box{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 2px solid black;
+            }
+        </style>
+<title>Ejercicio 21</title>
+</head>
+<body>
+<div id="box">Caja</div>
+<form action="" id="form">
+    <label for="width">
+        Width
+        <input type="number" id="width">
+    </label>
+    <label for="height">
+        Height
+        <input type="number" id="height">
+    </label>
+    <label for="borderColor">
+        Border color
+        <input type="color" id="borderColor">
+    </label>
+    <button type="submit">
+        Change
+    </button>
+</form>
+<script>
+let form = document.getElementById("form")
+
+form.addEventListener("submit",(e) => {
+    e.preventDefault()
+    let box = document.getElementById("box")
+    let height = document.getElementById("height").value
+    let width = document.getElementById("width").value
+    let color = document.getElementById("borderColor").value
+    box.style.width = width+ "px";
+    box.style.height = height + "px";
+    box.style.borderColor = color
+})
+</script>
+</body>
+</html>

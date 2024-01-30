@@ -1,0 +1,51 @@
+<!Doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ejercicio26</title>
+</head>
+<body>
+<ul id="list">
+    <li>Ususario</li>
+    <li>Ciudad</li>
+    <li>Ni idea</li>
+    <li>Pais</li>
+    <li>Email</li>
+    <li>ns</li>
+</ul>
+<span>Quieres ordenar la lista?</span>
+<button onclick="order()">Aceptar</button>
+<button onclick="randomOrder()">Cancelar</button>
+<script>
+    let list = document.querySelectorAll('#list li')
+    function order() {
+        let listValues = []
+        for (let listKey = 0; listKey < list.length; listKey++) {
+            listValues.push(list[listKey].innerText)
+        }
+        listValues.sort()
+        for (const listValuesKey in listValues) {
+            list[listValuesKey].innerText = listValues[listValuesKey]
+        }
+    }
+    function randomOrder(){
+        let listValues = []
+        for (let listKey = 0; listKey < list.length; listKey++) {
+            listValues.push(list[listKey].innerText)
+        }
+        listValues.sort(() =>{
+            let randomizer = [-1, 0, 1]
+            let rand = Math.floor(Math.random() * 3 )
+            console.log(rand)
+            return randomizer[rand]
+        })
+        for (const listValuesKey in listValues) {
+            list[listValuesKey].innerText = listValues[listValuesKey]
+        }
+    }
+</script>
+</body>
+</html>

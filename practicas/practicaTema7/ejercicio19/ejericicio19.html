@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicio 19</title>
+    <style>
+        div {
+            width: 50%;
+            height: 50dvh;
+        }
+        div img{
+            width: 100%;
+            max-height: 50dvh     ;
+        }
+    </style>
+</head>
+<body>
+<div id="img">
+    <img src="img/Human.png" alt="Human">
+</div>
+
+<script>
+    addEventListener("keypress", (ev) => {
+        let img = document.getElementById('img');
+        switch (ev.key[0]) {
+            case '0' : {
+                img.innerHTML = `<img src="img/HumanArtificer.png" alt="HumanArtif">`
+                break;
+            }
+            case '1' : {
+                img.innerHTML = `<img src="img/HumanBarbarian.png" alt="HumanArtif">`
+                break;
+            }
+            case '2' : {
+                img.innerHTML = `<img src="img/HumanBard.png" alt="HumanArtif">`
+                break;
+            }
+            case '3' : {
+                img.innerHTML = `<img src="img/HumanCleric.png" alt="HumanArtif">`
+                break;
+            }
+            case '4' : {
+                img.innerHTML = `<img src="img/HumanDruid.png" alt="HumanArtif">`
+                break;
+            }
+            case '5' : {
+                img.innerHTML = `<img src="img/HumanFighter.png" alt="HumanArtif">`
+                break;
+            }
+            case '6' : {
+                img.innerHTML = `<img src="img/HumanMonk.png" alt="HumanArtif">`
+                break;
+            }
+            case '7' : {
+                img.innerHTML = `<img src="img/HumanPaladin.png" alt="HumanArtif">`
+                break;
+            }
+            case '8' : {
+                img.innerHTML = `<img src="img/HumanRanger.png" alt="HumanArtif">`
+                break;
+            }
+            case '9' : {
+                img.innerHTML = `<img src="img/HumanRogue.png" alt="HumanArtif">`
+                break;
+            }
+        }
+    })
+</script>
+</body>
+</html>

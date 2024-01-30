@@ -1,0 +1,41 @@
+<!Doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ejercicio23</title>
+</head>
+<body>
+<button onclick="console.log(document.cookie)">See cookies</button>
+<button onclick="deleteCookies()">Borrar cookies</button>
+<script>
+    document.cookie = "user=Ramon;max-age=3000000;email=ramtxuwar@g.e;expiresThu, 01 Jan 2030 00:00:00 UTC;"
+    console.log(document.cookie)
+
+    function deleteCookies() {
+        let cookies = document.cookie.split(';')
+
+        for (const cookiesKey in cookies) {
+            let cookie = cookies[cookiesKey].split('=')
+            if (cookie[0] === 'expires' || cookie[0] === 'max-age') {
+                continue;
+            }
+            document.cookie = `${cookie[0]}=${cookie[1]};expires= Thu, 01 Jan 1970 00:00:00 UTC;`
+        }
+    }
+
+
+    function deleteAllCookies() {
+        setTimeout(() => {
+            deleteCookies()
+            console.log('cookie eliminada')
+            deleteAllCookies()
+        }, 10 * 1000)
+    }
+
+    deleteAllCookies();
+</script>
+</body>
+</html>
