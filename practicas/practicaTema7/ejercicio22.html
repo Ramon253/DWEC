@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicio 22</title>
+    <style>
+        body{
+            display: flex;
+            flex-flow: column wrap;
+            align-content: center;
+            justify-items: center;
+            background: #171717;
+            color: #171717;
+            gap: 1rem;
+        }
+        div{
+            width: 60dvw;
+            min-height: 50dvh;
+            height: auto;
+            background: whitesmoke;
+            border-radius: 1rem;
+            padding: 1rem;
+        }
+    p{
+        text-align: center;
+    }
+        button{
+            background: grey;
+            border-radius: 1rem;
+            padding: 1rem;
+            border: none;
+            color: whitesmoke;
+            transition: color 300ms;
+        }
+        button:hover{
+            background: #1abc9c;
+            color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+<div ><p id="paragraph"></p></div>
+<button onclick="cleanScreen()">Limpiar pantallla</button>
+<script>
+    addEventListener('keypress', (ev)=>{
+        if (ev.key === ' '){
+            document.getElementById('paragraph').innerHTML += '&nbsp';
+        }
+        document.getElementById('paragraph').innerText += ev.key
+
+    })
+
+    function cleanScreen(){
+        document.getElementById('paragraph').innerText = ''
+    }
+</script>
+</body>
+</html>

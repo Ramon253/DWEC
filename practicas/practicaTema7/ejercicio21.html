@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lista</title>
+    <style>
+        * {
+            font-family: "Roboto", sans-serif;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-height: 70dvh;
+            flex-wrap: wrap;
+        }
+
+        li > div {
+            display: flex;
+            width: 10rem;
+            padding: 1rem;
+            background: #535353;
+            border-radius: 1rem;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        li div > button {
+            background: #1abc9c;
+            border-radius: 1rem;
+            color: white;
+            border: none;
+            padding: 0.5rem;
+
+        }
+
+        li div > button:hover {
+            background: indianred;
+        }
+
+        input {
+            border-radius: 0.5rem;
+            padding: 0.25rem;
+        }
+
+        button {
+            background: #1abc9c;
+            border-radius: 0.5rem;
+            color: white;
+            border: none;
+            padding: 0.5rem;
+        }
+
+        button:hover {
+            background: #3a4451;
+        }
+    </style>
+</head>
+<body>
+<h1>Lista de la compra</h1>
+<ul id="list">
+    <li>
+        <div><span>Patatas</span>
+            <button onclick="deleteLi(this)">X</button>
+        </div>
+    </li>
+    <li>
+        <div><span>Cebolla</span>
+            <button onclick="deleteLi(this)">X</button>
+        </div>
+    </li>
+    <li>
+        <div><span>Leche</span>
+            <button onclick="deleteLi(this)">X</button>
+        </div>
+    </li>
+    <li>
+        <div><span>Pollo</span>
+            <button onclick="deleteLi(this)">X</button>
+        </div>
+    </li>
+    <li>
+        <div><span>Lomo</span>
+            <button onclick="deleteLi(this)">X</button>
+        </div>
+    </li>
+    <li>
+        <div><span>Agua</span>
+            <button onclick="deleteLi(this)">X</button>
+        </div>
+    </li>
+</ul>
+<form action="" method="post" id="form">
+    <label for="listItem"><input type="text" id="listItem"></label>
+    <button type="submit">
+        Insetar a la lista
+    </button>
+</form>
+<button onclick="orderList()">
+    ordenar alfabéticamente
+</button>
+
+<script>
+
+
+    function orderList() {
+        let htmlList = document.querySelectorAll('#list div')
+        let list = []
+        htmlList.forEach(li => list.push(li.children[0].innerHTML))
+        list.sort();
+        for (const listKey in htmlList) {
+            addElement(list[listKey], htmlList[listKey])
+        }
+    }
+
+    let form = document.getElementById('form')
+    form.addEventListener('submit', (e) => {
+        e.preventDefault()
+        let listItem = document.getElementById('listItem')
+        addLi(listItem.value, document.getElementById('list'))
+        listItem.value= ''
+    })
+
+    function addElement(text, listItem) {
+        listItem.innerHTML = `<span>${text}</span> <button onclick="deleteLi(this)">X</button>`
+    }
+
+    function addLi(text, ul) {
+        ul.innerHTML +=
+            `<li><div><span>${text}</span><button onclick="deleteLi(this)">X</button></div></li>`
+    }
+
+    function deleteLi(button) {
+        let li = button.parentElement.parentElement
+        li.style.display = 'none';
+    }
+</script>
+</body>
+</html>

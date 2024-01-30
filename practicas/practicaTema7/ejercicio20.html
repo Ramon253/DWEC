@@ -20,7 +20,9 @@
             border-radius: 1rem;
             top: 10px;
             left: 0;
+            transition: all 200ms;
         }
+
     </style>
 </head>
 <body>
@@ -28,30 +30,37 @@
 <script>
     addEventListener('keydown', (ev) => {
         let box = document.getElementById("box")
-        switch (ev.key){
+        let move = 10
+        switch (ev.key) {
             case 'ArrowUp' : {
-                let top = box.style.top
-                top = parseInt( top.substring(0, top.length-2))
-                if (isNaN(top)){
-                    box.style.top = '-10px'
-                    break;
-                }
-                console.log(top -  10)
-                top -= 10
-                box.style.top = top + "px"
-                break;
+                box.style.top = `${getNextPosition(box.style.top, -move)}px`
+                break
             }
             case 'ArrowDown' : {
+                box.style.top = `${getNextPosition(box.style.top, +move)}px`
                 break
             }
             case 'ArrowLeft' : {
+                box.style.left = `${getNextPosition(box.style.left, -move)}px`
                 break
             }
-            case 'ArrowRight':{
+            case 'ArrowRight': {
+                box.style.left = `${getNextPosition(box.style.left, +move)}px`
                 break
             }
         }
     })
+
+    function getNextPosition(positionStr, move) {
+        let curPosition = positionStr.substring(0, positionStr.length - 2)
+        curPosition = parseInt(curPosition)
+
+        if (isNaN(curPosition)) {
+            curPosition = 0;
+        }
+
+        return curPosition + move;
+    }
 </script>
 </body>
 </html>
