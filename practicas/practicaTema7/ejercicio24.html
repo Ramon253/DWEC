@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicio 24</title>
+    <style>
+        body{
+            background: #171717;
+
+            display: flex;
+            flex-flow:column wrap;
+            align-content: center;
+        }
+        p{
+            max-width: 80dvw;
+            min-width: 50dvw;
+            padding: 1rem;
+            background: whitesmoke;
+            border-radius: 0.5rem;
+        }
+        div{
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        button{
+            padding: 0.5rem;
+            background: #1abc9c;
+            border: 1px solid black;
+            border-radius: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <p id="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, autem cum delectus expedita in itaque
+        minima molestiae nam natus odio, officia quo voluptas. Accusamus aliquid aperiam beatae consectetur culpa
+        cupiditate delectus deserunt dolore dolores eaque enim facere fugiat fugit hic id inventore ipsa ipsam itaque
+        iure laborum magni maxime minus molestiae natus necessitatibus nihil obcaecati odit officiis quae quas, quasi
+        quis reiciendis rem sequi tenetur velit voluptatibus. Commodi esse explicabo hic iste quo rerum tempora, veniam
+        voluptatibus. Aut cumque dolores eius eum expedita fugit, molestias nam, possimus provident rerum, sunt
+        voluptates! Ab, accusantium autem consequuntur culpa, dicta expedita facere laudantium maiores mollitia numquam
+        officia praesentium ullam, voluptatem. Accusamus at deserunt dolorem facilis fuga iusto, magnam nam nulla,
+        obcaecati, quisquam similique tempora vel voluptates? Accusamus ad aliquam aliquid atque cum, deserunt eaque eos
+        ex exercitationem illo illum magnam nihil nostrum odit quod reprehenderit saepe sit tempore, temporibus
+        veritatis. Culpa, dolor est eum exercitationem ipsa labore libero praesentium quia voluptas? Consectetur, eos
+        nisi odio officiis quod ullam veritatis. Alias amet aperiam deserunt dolores fuga hic illum, natus nemo neque
+        nulla odit officiis, pariatur quia quos repellendus. A aliquid asperiores, culpa delectus ducimus, facere
+        nostrum placeat qui ratione, repellat similique sint tenetur totam? Distinctio doloribus natus nihil veritatis.
+        Architecto atque cum distinctio enim error est eveniet fugit hic laudantium maiores officia, qui sit soluta!
+        Alias consectetur cumque cupiditate dolorem ducimus eaque exercitationem explicabo iure laborum libero minima
+        nam natus nisi nulla odio odit omnis placeat, quasi, quis quod repellendus sapiente sunt velit, vitae
+        voluptatem. Assumenda consequatur eum iste molestiae quod. Accusantium corporis deleniti dicta dignissimos
+        doloribus earum eum facere hic illo necessitatibus porro quod saepe, soluta tempora voluptatibus. Consequatur
+        expedita, illum incidunt minus non quisquam repudiandae ullam voluptatem. Adipisci commodi dolorum error libero
+        qui, quos voluptate! Dolores harum hic maiores quia ut. Ad autem consequuntur cupiditate debitis dignissimos
+        distinctio ducimus facere, id illo, nesciunt, odit quod repellendus rerum. Aliquam doloremque maxime sit tenetur
+        ut! Consectetur enim ex expedita, iusto magni odio pariatur perspiciatis voluptatem? A consequuntur delectus
+        dolor eaque facilis, ipsa ipsam magnam mollitia placeat quaerat soluta tempore. Doloremque ipsa magnam
+        recusandae sapiente tempora. Aliquam asperiores atque autem blanditiis dolorum error excepturi facilis illo in
+        ipsa iure laborum maxime, molestias nobis nulla odit optio quae, quasi quidem quis repudiandae, sit vel
+        veritatis! Aspernatur explicabo fugit iure maxime minus obcaecati quas quidem reiciendis soluta totam. A
+        adipisci, at autem beatae consequatur enim facere incidunt itaque modi nisi nostrum nulla quas reprehenderit
+        sint temporibus! Alias dicta doloribus earum eius facere, fuga illum maxime minima porro qui quia quod saepe!
+        Aut cumque cupiditate error exercitationem impedit laboriosam nemo numquam sed? Culpa dolorum excepturi fugiat
+        illum maiores maxime minima modi natus nesciunt, praesentium quos, suscipit tempora. Expedita facilis fugiat
+        incidunt officia, reiciendis soluta suscipit. Aspernatur aut cupiditate dolorem dolores eos est eum incidunt,
+        labore laborum libero necessitatibus, placeat possimus, ullam vitae voluptatibus. Animi asperiores consectetur
+        dolore fuga fugit incidunt nemo nesciunt, ullam. A aliquid, aperiam asperiores atque aut, beatae consequatur
+        corporis cum deserunt, dicta dignissimos eaque esse et hic labore necessitatibus nisi odio odit pariatur
+        perferendis possimus quae ratione repellendus rerum ut velit veritatis? Architecto consequatur, dolorem esse id
+        iure quia quibusdam quod reiciendis rem suscipit tenetur vero? Autem ipsa laborum magnam nisi obcaecati
+        perferendis, quae voluptates. Aut, error et eum magnam minima quae quisquam ullam unde voluptates? Blanditiis
+        commodi delectus dignissimos ea, esse et impedit in iusto nostrum odio officia officiis perferendis provident
+        quae quis quos repellendus sint tempore ullam voluptatibus. Accusantium, aperiam cum delectus dolor, dolorem ea
+        earum, eligendi error eveniet fugit incidunt iure nobis optio perferendis placeat quo sed sequi sit velit veniam
+        veritatis.</p>
+</div>
+<div>
+    <button onclick="deleteVowel('a')">a</button>
+    <button onclick="deleteVowel('e')">e</button>
+    <button onclick="deleteVowel('i')">i</button>
+    <button onclick="deleteVowel('o')">o</button>
+    <button onclick="deleteVowel('u')">u</button>
+</div>
+
+<script>
+    function deleteVowel(vowel) {
+        let htmlP = document.getElementById('text');
+        let text = htmlP.innerText;
+        let textArr = text.split('');
+        text = '';
+
+        textArr.forEach((char)=>{
+            if (char === vowel){
+                return;
+            }
+            text += char;
+        })
+        htmlP.innerText = text;
+    }
+</script>
+</body>
+</html>

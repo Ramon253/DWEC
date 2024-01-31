@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicio 23</title>
+    <style>
+        #box {
+            box-sizing: border-box;
+            display: flex;
+            place-content: center;
+            align-items: center;
+            font-family: "Roboto", sans-serif;
+            width: 100px;
+            height: 100px;
+            padding: 1rem;
+            border-radius: 1rem;
+            background: #08bff3;
+            color: #171717;
+            transition: all 50ms;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div onmouseover="move(this)" id="box">No me toques</div>
+<script>
+    let box = document.getElementById('box');
+    let move = (box) => {
+        let maxWidth = window.visualViewport.width;
+        let maxHeight = window.visualViewport.height;
+
+        box.style.top = Math.floor(Math.random() * maxHeight)+'px'
+        box.style.left = Math.floor(Math.random() * maxWidth)+'px'
+
+    }
+</script>
+</body>
+</html>

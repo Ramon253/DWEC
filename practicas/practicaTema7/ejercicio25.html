@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicio 25</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .box {
+            box-sizing: border-box;
+            width: 1rem;
+            height: 4rem;
+            border-radius: 1rem;
+            background: green;
+        }
+
+        .box:first-child {
+            background: red;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box" id="red">Verde</div>
+<div class="box" id="green">Rojo</div>
+
+<script>
+    addEventListener('keyup', ev => {
+
+        switch (ev.key.toLowerCase()) {
+            case 'a' : {
+                let box = document.getElementById('red')
+                let width = addWidth(box)
+                if (width === 500) {
+                    win('Rojo')
+                }
+                break
+            }
+            case 'ñ' : {
+                let box = document.getElementById('green')
+                let width = addWidth(box)
+                if (width === 500) {
+                    win('Verde')
+                }
+                break
+            }
+        }
+    })
+
+    function addWidth(box) {
+        let curWidth = box.style.width
+        let num = parseInt(curWidth.substring(0, curWidth.length - 2))
+
+        if (isNaN(num)) {
+            num = 0
+        }
+        num += 5
+        box.style.width = `${num}px`
+        return num;
+    }
+
+    function win(color) {
+        document.write(`<h1>Ganador ${color}</h1>`)
+    }
+</script>
+</body>
+</html>
