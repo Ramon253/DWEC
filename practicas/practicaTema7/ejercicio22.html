@@ -26,7 +26,7 @@
             padding: 1rem;
         }
     p{
-        max-width: 60dvw;
+        max-width: 50dvw;
     }
         button{
             background: grey;
@@ -47,10 +47,11 @@
 <button onclick="cleanScreen()">Limpiar pantallla</button>
 <script>
     addEventListener('keypress', (ev)=>{
+        let paragraph = document.getElementById('paragraph')
         if (ev.key === ' '){
-            document.getElementById('paragraph').innerHTML += '&nbsp';
+            paragraph.innerHTML += '&nbsp';
         }
-        document.getElementById('paragraph').innerText += ev.key
+        paragraph.innerText += ev.key
 
     })
 
