@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Snake</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        div {
+            background: red;
+            padding: 2rem;
+            width: 4rem;
+            position: absolute;
+            border-radius: 1rem;
+            top: 10px;
+            left: 0;
+            transition: all 200ms;
+        }
+
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+
+
+    setInterval(() => {
+        console.log('??')
+        move(this.dir)
+    }, 100)
+
+    addEventListener('keydown', (ev) => {
+        move(ev.key)
+    })
+
+    function move(ev) {
+        let box = document.getElementById("box")
+        let move = 10
+        switch (ev) {
+            case 'ArrowUp' : {
+
+                box.style.top = `${getNextPosition(box.style.top, -move)}px`
+
+
+                break
+            }
+            case 'ArrowDown' : {
+                box.style.top = `${getNextPosition(box.style.top, +move)}px`
+                break
+            }
+            case 'ArrowLeft' : {
+                box.style.left = `${getNextPosition(box.style.left, -move)}px`
+                break
+            }
+            case 'ArrowRight': {
+                box.style.left = `${getNextPosition(box.style.left, +move)}px`
+                break
+            }
+        }
+    }
+
+    function getNextPosition(positionStr, move) {
+        let curPosition = positionStr.substring(0, positionStr.length - 2)
+        curPosition = parseInt(curPosition)
+
+        if (isNaN(curPosition)) {
+            curPosition = 0;
+        }
+
+        return curPosition + move;
+    }
+</script>
+</body>
+</html>
