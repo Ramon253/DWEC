@@ -26,43 +26,74 @@
     </style>
 </head>
 <body>
+
 <div id="box"></div>
 <script>
+    let snake = {
+        html: document.getElementById('box'),
+        direction: 'ArrowRight',
+        snake : []
+    }
 
 
-    setInterval(() => {
-        console.log('??')
-        move(this.dir)
-    }, 100)
 
-    addEventListener('keydown', (ev) => {
-        move(ev.key)
-    })
+    startGame(snake)
 
-    function move(ev) {
-        let box = document.getElementById("box")
-        let move = 10
-        switch (ev) {
+    function startGame(snake){
+        setInterval(() => {
+            move(snake)
+        }, 100)
+        addEventListener('keydown', (ev) => {
+            if (ev.key.substring(0, 5) === 'Arrow')
+                snake.direction = ev.key;
+            else{
+                addSegment(snake)
+                snake.html = document.getElementById('box')
+            }
+        })
+
+    }
+
+    function addSegment(snake){
+        snake.html.parentElement.innerHTML += "<div id='box"+ snake.snake.length +"'></div>"
+        snake.snake.push({
+            html: document.getElementById(`box${snake.snake.length}`),
+            direction: 'ArrowRight',
+            snake: []
+        })
+    }
+
+    function move(snake) {
+        let direction = snake.direction
+        let box = snake.html
+        let movement = 10
+        switch (direction) {
             case 'ArrowUp' : {
-
-                box.style.top = `${getNextPosition(box.style.top, -move)}px`
-
-
+                box.style.top = `${getNextPosition(box.style.top, -movement)}px`
                 break
             }
             case 'ArrowDown' : {
-                box.style.top = `${getNextPosition(box.style.top, +move)}px`
+                box.style.top = `${getNextPosition(box.style.top, +movement)}px`
                 break
             }
             case 'ArrowLeft' : {
-                box.style.left = `${getNextPosition(box.style.left, -move)}px`
+                box.style.left = `${getNextPosition(box.style.left, -movement)}px`
                 break
             }
             case 'ArrowRight': {
-                box.style.left = `${getNextPosition(box.style.left, +move)}px`
+                box.style.left = `${getNextPosition(box.style.left, +movement)}px`
                 break
             }
         }
+
+        if (snake.snake.length === 0) return
+        for (let i = 0; i < snake.snake.length; i++) {
+            snake.snake[i].direction = direction
+            setTimeout(()=>{
+                move(snake.snake[i])
+            },1500 * (i+1))
+        }
+
     }
 
     function getNextPosition(positionStr, move) {
