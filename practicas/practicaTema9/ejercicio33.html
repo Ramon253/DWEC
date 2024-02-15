@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="cv">
+
+</div>
+<script>
+    fetch('./cv.json')
+        .then(res => res.json())
+        .then(json => document.getElementById('cv').innerHTML += `<h1>Nombre : ${json.name}</h1>`)
+</script>
+</body>
+</html>

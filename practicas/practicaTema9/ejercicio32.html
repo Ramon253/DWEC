@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Star Wars</title>
+    <style>
+        body {
+            font-family: "Roboto", sans-serif;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        a{
+            text-decoration: none;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            background: #1abc9c;
+        }
+        h2  {
+            padding: 1rem;
+            border-radius: 1rem;
+            background: #3a4451;
+            height: 60px;
+        }
+        li{
+            margin: 0.5rem;
+        }
+        a:hover{
+            background: white;
+            color: #1abc9c;
+        }
+
+        body > div {
+            padding: 1rem;
+            display: flex;
+            flex-flow: column wrap;
+            background: #1a1f29;
+            color: whitesmoke;
+            width: 20vw;
+            border-radius: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+<div id="people"></div>
+<div id="planet"></div>
+<div id="spaceShip"></div>
+<script>
+    fetch('https://swapi.dev/api/people/1')
+        .then(res => res.json())
+        .then(json => {
+            let people = document.getElementById('people')
+            people.innerHTML +=
+                `<h2>Name : ${json.name}</h2>
+                 <h2>Height : ${json.height}</h2>
+                 <h2>Mass : ${json.mass}</h2>
+                 <h2>Hair color : ${json.hair_color}</h2>
+                 <h2>Skin color : ${json.skin_color}</h2>
+                 <h2>Eye color : ${json.eye_color}</h2>
+                 <h2>Birth year: ${json.birth_year}</h2>
+                 <h2>gender: ${json.gender}</h2>
+                 <h2><a target="_blank" href="${json.homeworld}">Home world</a></h2>`
+        })
+
+    fetch('https://swapi.dev/api/planets/1')
+        .then(res => res.json())
+        .then(json => {
+            let planet = document.getElementById('planet');
+            planet.innerHTML +=
+                `<h2>Name : ${json.name}</h2>
+                <h2>Rotation period : ${json.rotation_period}</h2>
+                <h2>Orbital period : ${json.orbital_period}</h2>
+                <h2>Diameter : ${json.diameter}</h2>
+                <h2>Climate : ${json.climate}</h2>
+                <h2>Population : ${json.polulation}</h2>
+                <h2>Surface water : ${json.surface_water}</h2>
+                <ul><h2>Residents </h2>`
+            let i = 0
+            json.residents.forEach((el) => {
+                planet.innerHTML += `<li><a target="_blank" href="${el}">Resident ${++i}</a></li>`
+            })
+        })
+
+    fetch('https://swapi.dev/api/starships/2')
+        .then(res => res.json())
+        .then(json => {
+            let starship = document.getElementById('spaceShip')
+            starship.innerHTML +=
+                `<h2>Name : ${json.name}</h2>
+                 <h2>Model : ${json.model}</h2>
+                 <h2>Manufactured : ${json.manufactured}</h2>
+                 <h2>Cost in credits : ${json.cost_in_credits}</h2>
+                 <h2>Length : ${json.length}</h2>
+                 <h2>Max atmosphering speed : ${json.max_atmosphering_speed}</h2>
+                 <h2>Crew : ${json.crew}</h2>
+                 <h2>Passengers : ${json.passengers}</h2>
+                 <h2>Cargo capacity : ${json.cargo_capacity}</h2>
+                 <h2>Consumables : ${json.consumables}</h2>
+                 <h2>Starship class : ${json.starship_class}</h2>
+                 `
+        })
+</script>
+</body>
+</html>
