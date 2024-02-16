@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img{
+            min-height: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="product" id="product1"><img src="" id="img1" alt=""></div>
+<div class="product"><img src="" id="img2" alt=""></div>
+<div class="product"><img src="" id="img3" alt=""></div>
+<div class="product"><img src="" id="img4" alt=""></div>
+<div class="product"><img src="" id="img5" alt=""></div>
+<div class="product"><img src="" id="img6" alt=""></div>
+<div class="product"><img src="" id="img7" alt=""></div>
+<div class="product"><img src="" id="img8" alt=""></div>
+<div class="product"><img src="" id="img9" alt=""></div>
+
+<script>
+    addEventListener('DOMContentLoaded', ev => {
+        fetch('https://api.allorigins.win/get?url=https://coffee.alexflipnote.dev/random')
+            .then(res => {
+                console.log(res)
+                return res.blob()
+            })
+            .then(blob => {
+                console.log(blob)
+                document.getElementById('img1').src = 'data:image/bmp;base64,'+Base64.encode(blob)
+            })
+
+    })
+
+</script>
+</body>
+</html>
