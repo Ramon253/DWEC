@@ -4,35 +4,103 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        img{
-            min-height: 100px;
+        #main {
+            display: grid;
+            grid-template-columns: 25% 25% 25% 25%;
+            justify-content: center;
+            align-content: center;
+        }
+
+        .product {
+            place-content: center;
+            align-content: center;
+        }
+
+        .product-r-1 {
+            grid-row: 1;
+        }
+
+        .product-r-2 {
+            grid-row: 2;
+        }
+
+        .product-r-3 {
+            grid-row: 3;
+        }
+
+        img {
+            height: 150px;
+            padding: 1rem;
+            border-radius: 1rem;
+            background: #1a1f29;
         }
     </style>
 </head>
 <body>
-<div class="product" id="product1"><img src="" id="img1" alt=""></div>
-<div class="product"><img src="" id="img2" alt=""></div>
-<div class="product"><img src="" id="img3" alt=""></div>
-<div class="product"><img src="" id="img4" alt=""></div>
-<div class="product"><img src="" id="img5" alt=""></div>
-<div class="product"><img src="" id="img6" alt=""></div>
-<div class="product"><img src="" id="img7" alt=""></div>
-<div class="product"><img src="" id="img8" alt=""></div>
-<div class="product"><img src="" id="img9" alt=""></div>
+<main id="main">
+    <div class="product product-r-1"><img src="" id="img1" alt="cafe"></div>
+    <div class="product product-r-1"><img src="" id="img2" alt="cafe"></div>
+    <div class="product product-r-1"><img src="" id="img3" alt="cafe"></div>
+    <div class="product product-r-2"><img src="" id="img4" alt="cafe"></div>
+    <div class="product product-r-2"><img src="" id="img5" alt="cafe"></div>
+    <div class="product product-r-2"><img src="" id="img6" alt="cafe"></div>
+    <div class="product product-r-3"><img src="" id="img7" alt="cafe"></div>
+    <div class="product product-r-3"><img src="" id="img8" alt="cafe"></div>
+    <div class="product product-r-3"><img src="" id="img9" alt="cafe"></div>
+</main>
+<div id="loadMessage">
 
+</div>
 <script>
+    let timeout = 1
+    //Para que cuando se hayan lanzado 9 requests exitosas pare aunque alguna haya dado error
+    let requestSent = 0
+
+    let main = document.getElementById('main')
+    let loadMessage = document.getElementById('loadMessage')
+    //Cuenta de fotos ya añadidas
+    let count = 0
+    main.style.display = 'none';
+    loadMessage.innerHTML = `<h1>Cargando ${count} de 9</h1>`
+
+
     addEventListener('DOMContentLoaded', ev => {
-        fetch('https://api.allorigins.win/get?url=https://coffee.alexflipnote.dev/random')
-            .then(res => {
-                console.log(res)
-                return res.blob()
-            })
-            .then(blob => {
-                console.log(blob)
-                document.getElementById('img1').src = 'data:image/bmp;base64,'+Base64.encode(blob)
-            })
+        let imgs = document.querySelectorAll('img')
+        imgs.forEach(element => {
+            fetchImage(element)
+        })
 
     })
+
+    function fetchImage(img) {
+        //Fetch a la api
+        fetch('https://api.allorigins.win/get?url=https://coffee.alexflipnote.dev/random',{
+            //Con esto evito que al tardar mucho en cargar las imagenes se carge la misma 9 veces
+            cache: "no-cache"
+        })
+            .then(res => {
+                //Compurebo es status code
+                if (res.status !== 200) {
+                    //si no es 200 y no hay 9 requests exitosas lanza otra request con algo de timeout
+                    if (requestSent !== 9)
+                        setTimeout(() => {
+                            fetchImage(img)
+                        }, 100 * timeout++)
+                } else requestSent++
+                //Si sale bien la res esta en json
+                return res.json()
+            })
+            .then(blob => {
+                //Agregamos la imagen y quetamos el display none
+                document.getElementById(img.id).src = blob.contents
+                count++
+                loadMessage.innerHTML = `<h1>Cargando ${count} de 9</h1>`
+                if (count === 9) {
+                    main.style.display = 'grid'
+                    loadMessage.innerHTML = ``
+                }
+            })
+    }
 
 </script>
 </body>
