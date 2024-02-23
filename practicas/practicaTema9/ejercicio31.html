@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="resultado">Ver</button>
+<div id="output"></div>
+<script>
+    function handler(json) {
+
+        return new Promise((resolve, reject) => {
+            document.getElementById('resultado').addEventListener('click', () => {
+                resolve(json)
+            })
+        })
+    }
+
+    fetch('https://dogapi.dog/api/facts?number=5')
+        .then(res => res.json())
+        .then(json => handler(json))
+        .then((json) => {
+            for (const jsonKey in json) {
+                document.getElementById('output').innerHTML += `<p>${jsonKey} : ${json[jsonKey]}</p>`
+            }
+        })
+
+</script>
+</body>
+</html>

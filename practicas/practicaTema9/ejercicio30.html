@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="output"></div>
+<script>
+
+    let isQ = false
+
+    function handler(ev) {
+        console.log(ev)
+        if (ev.code === 'KeyQ') {
+            isQ = true
+            console.log('??????????????????')
+        } else if (ev.key === 'a' && isQ) {
+            console.log('?????')
+            document.getElementById('output').innerHTML = '<h1>Combinacion secreta pulsada</h1>'
+        }
+        return promiseEventHandler('keyup')
+    }
+
+    promiseEventHandler('keyup')
+        .then(ev => handler(ev)).then(ev => handler(ev))
+
+    function promiseEventHandler(event) {
+        return new Promise((resolve, reject) => {
+            document.addEventListener(event, (ev) => {
+                ev.preventDefault()
+                resolve(ev)
+            })
+        })
+    }
+</script>
+</body>
+</html>

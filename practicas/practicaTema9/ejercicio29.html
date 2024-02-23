@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 id="header">CARGANDO</h1>
+<script>
+    let contentLoaded = new  Promise((resolve, reject) => {
+        document.addEventListener('DOMContentLoaded', (ev) => resolve(ev))
+    })
+
+    contentLoaded
+        .then(ev => document.getElementById('header').innerHTML = 'LISTO PARA ACTUAR')
+</script>
+</body>
+</html>

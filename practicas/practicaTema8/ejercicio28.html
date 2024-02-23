@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="canvas" width="600px" height="600px" style="border: 1px solid"></canvas>
+<canvas id="canvas2" width="600px" height="600px" style="border: 1px solid"></canvas>
+<script>
+    let canvas = document.getElementById('canvas')
+    let figure = canvas.getContext('2d');
+
+    let centerY = 400
+    let centerX = 300
+    figure.fillStyle = 'red'
+
+    figure.beginPath();
+    figure.moveTo(centerX, 0);
+    figure.lineTo(400, 200)
+
+    figure.lineTo(centerX, centerY);
+    figure.lineTo(500, centerY)
+    figure.lineTo(600, 600);
+    figure.lineTo(400, 600)
+    figure.lineTo(centerX, centerY)
+    figure.lineTo(200, 600)
+    figure.lineTo(0, 600);
+    figure.lineTo(100, 399);
+    figure.lineTo(centerX, centerY)
+    figure.lineTo(200, 200)
+
+    figure.closePath();
+
+    figure.strokeStyle = 'red'
+
+    figure.fill()
+    figure.stroke()
+
+
+
+    let canvas2 = document.getElementById('canvas2')
+    let figure2 = canvas2.getContext('2d');
+
+    figure2.beginPath()
+    figure2.moveTo(300, 0)
+    figure2.lineTo(600, 600)
+    figure2.lineTo(0, 600)
+    figure2.closePath()
+    figure2.fillStyle = 'red'
+    figure2.fill()
+
+    let figure3 = canvas2.getContext('2d');
+    figure3.beginPath()
+    figure3.moveTo(300, 50)
+    figure3.lineTo(550, 575)
+    figure3.lineTo(50, 575)
+    figure3.closePath()
+    figure3.fillStyle = 'white'
+
+    figure3.fill()
+
+    
+</script>
+</body>
+</html>

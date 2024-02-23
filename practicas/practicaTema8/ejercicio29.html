@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-500">
+<div class="flex flex-col space-y-10 justify-center items-center">
+    <button onclick="saveData()"
+            class="bg-red-500 rounded p-5 border-black border-2 hover:bg-black hover:text-white hover:border-white">Save
+        data
+    </button>
+    <button onclick="getData()"
+            class="bg-red-500 rounded p-5 border-black  border-2 hover:bg-black hover:text-white hover:border-white">
+        Get Data
+    </button>
+    <button onclick="deleteData()" class="bg-red-500 rounded p-5 border-black border-2 hover:bg-black hover:text-white hover:border-white">
+        Delete data
+    </button>
+    <div id="output">
+    </div>
+</div>
+<script>
+    let data = {
+        marca: 'Mitsubishi',
+        modelo: 'modelo',
+        numBastidor: '11500',
+        cilindrada: '700cv',
+        numPuertas: 5,
+        color: 'red',
+        nombrePropietario: 'Pablo',
+        apellidos: 'Valladares',
+        direccion: 'niidea 4ºD',
+        telefono: 666333999,
+        correo: 'pablo@pablo.com'
+    }
+    function deleteData(){
+        sessionStorage.clear()
+    }
+    function getData() {
+        let output = document.getElementById('output')
+        if (sessionStorage.data) {
+            let json = JSON.parse(sessionStorage.data)
+            output.innerHTML = ''
+            for (const jsonKey in json) {
+                output.innerHTML += `<p>${jsonKey} : ${json[jsonKey]}</p>`
+                output.className = 'p-5 rounded bg-gray-700 text-white '
+            }
+        }else {
+            output.innerHTML = `No hay datos guardados todavia`
+            output.className = 'p-5 rounded bg-gray-700 text-white '
+        }
+    }
+
+    function saveData() {
+        window.sessionStorage.setItem('data', JSON.stringify(data))
+        window.alert('Datos guardados exitosamente ')
+    }
+</script>
+</body>
+</html>

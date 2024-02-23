@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Te llegará una notificación </h1>
+<script>
+    managePermissions()
+    setInterval(() => {
+        managePermissions()
+    }, 30 * 1000)
+    function managePermissions() {
+        if (Notification.permission === 'default') {
+            Notification.requestPermission().then(response => {
+                    if (response === 'granted'){
+                        showNotification()
+                    }
+                }
+            )
+        }else showNotification()
+    }
+    function showNotification() {
+        let notification = new Notification('Mira mi github', {body:'Haz click aquí'})
+        notification.onclick = () => {window.open('https://github.com/ramon253')}
+        setTimeout(() => {
+            notification.close()
+        }, 5000)
+    }
+</script>
+</body>
+</html>

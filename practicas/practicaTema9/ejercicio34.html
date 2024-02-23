@@ -24,6 +24,10 @@
             border-radius: 1rem;
 
         }
+        img {
+            width: 250px;
+            height: 250px;
+        }
     </style>
 </head>
 <body>
@@ -49,7 +53,16 @@
                     output.innerHTML += `<div id="item${i}"> </div> `
                     let item = document.getElementById(`item${i}`)
                     for (const resultsKey in json.results[i]) {
-                        item.innerHTML += `<h2> ${resultsKey} : ${json.results[i][resultsKey]}`
+
+                        switch (resultsKey) {
+
+                            case 'thumbnail' :
+                                item.innerHTML = `<img src="${json.results[i][resultsKey]}">`
+                                break;
+
+                            default :
+                                item.innerHTML += `<h2> ${resultsKey} : ${json.results[i][resultsKey]}`
+                        }
                     }
 
                 }

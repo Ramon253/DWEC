@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 21</title>
+</head>
+<body>
+<button onclick="executeError()">
+    Get error
+</button>
+<script>
+function devError(){
+    //Error en tiempo de desarrollo, osea es error de sintaxis por ejem
+    consoles.log('hola mundo')
+}
+function executeError(){
+    fetch('https://urlInventada.com').then(res => console.log(res))
+}
+</script>
+</body>
+</html>

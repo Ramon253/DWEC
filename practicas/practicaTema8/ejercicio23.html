@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    for (let i = 1; i <= 7 ; i++) {
+        try {
+           getErrors(i)
+        }catch (e){
+            console.log(`${e.name} : ${e.message} `)
+        }
+    }
+    function getErrors(num) {
+        switch (num) {
+            case 1:
+                throw new EvalError('Error de eval (funcion para pasar de str a codigo js)')
+            case 2:
+                throw new Error('Internal Errror')
+            case 3:
+                throw new RangeError('Range error')
+            case 4:
+                throw new ReferenceError('Error que salta cuando no existe la variable referenciada')
+            case 5:
+                throw new SyntaxError('Error de sintaxis en js')
+            case 6:
+                throw new TypeError('Error de tipado')
+            case 7:
+                throw new URIError('Error decodificando URIS')
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    console.log(getTryCatch())
+    function getTryCatch() {
+        //Aunque deberia pasar por el catch si o si pasa por el finally asi que devuelve el return del finally
+        try {
+            inventado.value = 1
+            return 'try'
+        } catch (e) {
+            return 'Catch'
+        } finally {
+            return 'Finally'
+        }
+    }
+</script>
+</body>
+</html>
